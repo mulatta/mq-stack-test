@@ -3,8 +3,8 @@
   outputs =
     { nixpkgs, ... }:
     {
-      # Slow on purpose: keeps CI pending long enough to line up queue scenarios.
-      checks.x86_64-linux.ok = nixpkgs.legacyPackages.x86_64-linux.runCommand "ok" { } ''
+      # Slow and tied to the tree, so every merge result is really built.
+      checks.x86_64-linux.ok = nixpkgs.legacyPackages.x86_64-linux.runCommand "ok" { src = ./.; } ''
         sleep 150
         touch $out
       '';
