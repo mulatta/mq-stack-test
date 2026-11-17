@@ -3,9 +3,9 @@
   outputs =
     { nixpkgs, ... }:
     {
-      # Fast.
+      # Slow on purpose: keeps CI pending long enough to line up queue scenarios.
       checks.x86_64-linux.ok = nixpkgs.legacyPackages.x86_64-linux.runCommand "ok" { } ''
-        sleep 1
+        sleep 150
         touch $out
       '';
     };
