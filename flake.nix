@@ -5,7 +5,6 @@
     {
       # Slow and tied to the tree, so every merge result is really built.
       checks.x86_64-linux.ok = nixpkgs.legacyPackages.x86_64-linux.runCommand "ok" { src = ./.; } ''
-        sleep 150
         touch $out
       '';
     };
